@@ -1,4 +1,4 @@
-var notify = function () {
+var notify = function (body) {
     // Check for notification compatibility.
     if (!'Notification' in window) {
         // If the browser version is unsupported, remain silent.
@@ -17,9 +17,9 @@ var notify = function () {
     // If the user has granted permission for this domain to send notifications...
     else if (Notification.permission === 'granted') {
         var n = new Notification(
-                    'New message from Liz',
+                    'New message from interwebs',
                     {
-                      'body': 'Liz: "Hi there!"',
+                      'body': body,
                       // ...prevent duplicate notifications
                       'tag' : 'unique string'
                     }
@@ -31,6 +31,7 @@ var notify = function () {
         // Callback function when the notification is closed.
         n.onclose = function () {
             console.log('Notification closed');
+
         };
     }
     // If the user does not want notifications to come from this domain...

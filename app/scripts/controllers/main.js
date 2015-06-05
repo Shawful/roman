@@ -20,9 +20,10 @@ angular.module('romansApp')
     // var socket = io.connect('http://localhost:3000');
     // console.log('connected?');
 
-	mySocket.on('news', function() {
+	mySocket.on('news', function(resp) {
+		var body = resp.body;
 		console.log("we've got news people!");
-		notify();
+		notify(body);
 	});
 
 	// $http.get('/notifications')
